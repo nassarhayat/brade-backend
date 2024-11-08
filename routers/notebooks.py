@@ -7,7 +7,7 @@ from services.agents import run_swarm
 from services.notebooks import get_notebooks_service, create_notebook_service, \
   get_notebook_service, add_thread_item_service
 from db import get_mongo_client
-from auth import verify_token
+# from auth import verify_token
 from schemas.notebook import Notebook, NotebookCreateRequest, NotebookResponse
 from schemas.thread import ThreadItemCreateRequest
 
