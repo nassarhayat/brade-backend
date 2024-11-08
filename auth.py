@@ -1,6 +1,6 @@
 from fastapi import Depends, HTTPException
-# import jwt
-from jwt import PyJWKClient
+import jwt
+# from jwt import PyJWKClient
 from clerk_backend_api import Clerk
 from fastapi import Depends
 from fastapi_clerk_auth import ClerkConfig, ClerkHTTPBearer, HTTPAuthorizationCredentials
