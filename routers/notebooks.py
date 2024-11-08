@@ -42,10 +42,10 @@ async def add_thread_item(
   notebook_id: str,
   thread_item_data: ThreadItemCreateRequest,
   client: MongoClient = Depends(get_mongo_client),
-  user: Any = Depends(verify_token)
+  # user: Any = Depends(verify_token)
 ):
   # print(user, "user")
-  response_generator = add_thread_item_service(notebook_id, thread_item_data, user.id, client)
+  response_generator = add_thread_item_service(notebook_id, thread_item_data, "user.id", client)
   return StreamingResponse(response_generator, media_type="text/event-stream")
   # async def stream_response():
   #   async for chunk in add_thread_item_service(notebook_id, thread_item_data, user.id, client):
