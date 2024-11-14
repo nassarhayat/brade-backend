@@ -1,7 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Optional
 from enum import Enum
-from .block import BlockModel
 from bson import ObjectId
 
 class UserType(str, Enum):
@@ -14,6 +13,6 @@ class ThreadItemModel(BaseModel):
   content: str
   userType: UserType
   userId: Optional[str] = None
-  block: Optional[BlockModel] = None
+  blockId: Optional[str] = None
   
   

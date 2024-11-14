@@ -13,8 +13,8 @@ class ThreadItem(BaseModel):
   id: str = Field(alias="_id")
   content: str
   userType: ThreadUserType
-  userId: Optional[str]
-  block: Optional[Block]
+  userId: Optional[str] = None
+  block: Optional[Block] = None
   
   @validator("id", pre=True)
   def convert_objectid_to_str(cls, value):

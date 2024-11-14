@@ -10,12 +10,13 @@ from db import get_mongo_client
 # from auth import verify_token
 from schemas.notebook import Notebook, NotebookCreateRequest, NotebookResponse
 from schemas.thread import ThreadItemCreateRequest
+from schemas.block import Block, BlockCreateRequest
 
 router = APIRouter()
 
 @router.post("/notebooks", response_model=NotebookResponse)
 async def create_notebook(request: NotebookCreateRequest, client: MongoClient = Depends(get_mongo_client)):
-  print(request, "request")
+  # print(request, "request")
   notebook = create_notebook_service(request.userRequest, client)
   print("N", notebook)
   if not notebook:
@@ -32,7 +33,7 @@ async def get_notebooks(filter_by: Optional[str] = Query(None, title="Filter not
 @router.get("/notebooks/{notebook_id}", response_model=NotebookResponse)
 async def get_notebook(notebook_id: str, client: MongoClient = Depends(get_mongo_client)):
   notebook = get_notebook_service(notebook_id, client)
-  print(notebook, "NOTEBOOK")
+  # print(notebook, "NOTEBOOK")
   if not notebook:
     raise HTTPException(status_code=404, detail="Notebook not found")
   return notebook
@@ -44,11 +45,21 @@ async def add_thread_item(
   client: MongoClient = Depends(get_mongo_client),
   # user: Any = Depends(verify_token)
 ):
-  # print(user, "user")
   response_generator = add_thread_item_service(notebook_id, thread_item_data, "user.id", client)
   return StreamingResponse(response_generator, media_type="text/event-stream")
-  # async def stream_response():
-  #   async for chunk in add_thread_item_service(notebook_id, thread_item_data, user.id, client):
-  #       yield chunk
-  
-  # return StreamingResponse(stream_response(), media_type="text/event-stream")
+
+# @router.patch("/notebooks/{notebook_id}/blocks/{block_id}", response_model=Block)
+# async def add_block_to_notebook_dashboard(
+#   notebook_id: str,
+#   block_id: str,
+#   block_data: BlockCreateRequest,
+#   client: MongoClient = Depends(get_mongo_client),
+#   # user: Any = Depends(verify_token)
+# ):
+#   response_generator = add_block_to_notebook_service(
+#     notebook_id,
+#     thread_item_data, 
+#     "user.id",
+#     client
+#   )
+#   return response_generator

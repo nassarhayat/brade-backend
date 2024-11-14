@@ -5,7 +5,7 @@ from models.notebook import NotebookModel
 from models.thread import ThreadItemModel, UserType
 from models.block import BlockModel, BlockType
 from services.agents import run_swarm
-from repositories.notebook import get_notebooks_repo, get_notebook_repo, \
+from repositories.notebooks import get_notebooks_repo, get_notebook_repo, \
   create_notebook_repo, add_thread_item_to_notebook_repo
 from pymongo.mongo_client import MongoClient
 
@@ -37,14 +37,14 @@ def add_thread_item_service(
   # notebook = add_thread_item_to_notebook_repo(notebook_id, thread_item, client)
   # agent_response = run_swarm(thread_item_data.content)
   # return agent_response
-  add_thread_item_to_notebook_repo(notebook_id, thread_item, client)
+  add_thread_item_to_notebook_repo(notebook_id, thread_item, None, client)
   
   agent_response = run_swarm(thread_item_data.content)
   response_content = ""
 
   async def collect_and_save_response():
       nonlocal response_content
-      
+      block_item = None
       async for chunk in agent_response:
         if chunk and chunk.strip():
           try:
@@ -53,8 +53,18 @@ def add_thread_item_service(
             if chunk_dict.get("role") == "tool":
               tool_type = chunk_dict.get("toolType")
               print("Tool type:", tool_type)
-              block = BlockModel(
-                  blockType=BlockType.chart,
+              if tool_type == "chart":
+                block_type = BlockType.chart
+              elif tool_type == "stacked-chart":
+                block_type = BlockType.stacked_chart
+              elif tool_type == "line-chart":
+                block_type = BlockType.line_chart
+              elif tool_type == "table":
+                block_type = BlockType.table
+              else:
+                block_type = BlockType.number
+              block_item = BlockModel(
+                  blockType=block_type,
                   data=content
               )
               content = ""
@@ -74,8 +84,12 @@ def add_thread_item_service(
           response_thread_item = ThreadItemModel(
               content=response_content,
               userType=UserType.assistant,
-              block=block
           )
-          add_thread_item_to_notebook_repo(notebook_id, response_thread_item, client)
+          add_thread_item_to_notebook_repo(
+            notebook_id,
+            response_thread_item,
+            block_item,
+            client
+          )
 
   return collect_and_save_response()
