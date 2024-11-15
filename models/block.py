@@ -28,6 +28,7 @@ class LayoutItem(BaseModel):
 
 class BlockModel(BaseModel):
   id: str = Field(default_factory=lambda: ObjectId(), alias="_id")
+  notebookId: str
   blockType: BlockType
   data: Any
   layout: Optional[LayoutItem] = None

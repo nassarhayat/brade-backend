@@ -2,7 +2,6 @@ from pydantic import BaseModel, Field, validator
 from enum import Enum
 from typing import List, Optional
 from .block import Block
-from bson import ObjectId
 
 class ThreadUserType(str, Enum):
     user = "user"
@@ -10,17 +9,11 @@ class ThreadUserType(str, Enum):
     system = "system"
 
 class ThreadItem(BaseModel):
-  id: str = Field(alias="_id")
+  id: str = Field()
   content: str
   userType: ThreadUserType
   userId: Optional[str] = None
   block: Optional[Block] = None
-  
-  @validator("id", pre=True)
-  def convert_objectid_to_str(cls, value):
-    if isinstance(value, ObjectId):
-        return str(value)
-    return value
 
   
 class ThreadItemCreateRequest(BaseModel):

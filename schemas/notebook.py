@@ -3,6 +3,10 @@ from typing import Optional, List
 from .thread import ThreadItem
 from .block import Block
 
+class NotebooksResponse(BaseModel):
+    id: str
+    title: str
+    
 class NotebookCreateRequest(BaseModel):
     userRequest: str
     

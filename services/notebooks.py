@@ -3,10 +3,11 @@ import json
 from typing import Optional
 from models.notebook import NotebookModel
 from models.thread import ThreadItemModel, UserType
-from models.block import BlockModel, BlockType
+from models.block import BlockModel, BlockType, LayoutItem
 from services.agents import run_swarm
 from repositories.notebooks import get_notebooks_repo, get_notebook_repo, \
   create_notebook_repo, add_thread_item_to_notebook_repo
+from repositories.blocks import update_block_repo, get_blocks_repo
 from pymongo.mongo_client import MongoClient
 
 def get_notebooks_service(filter_by: Optional[str], client: MongoClient):
@@ -65,7 +66,8 @@ def add_thread_item_service(
                 block_type = BlockType.number
               block_item = BlockModel(
                   blockType=block_type,
-                  data=content
+                  data=content,
+                  notebookId=notebook_id
               )
               content = ""
               # continue
@@ -93,3 +95,55 @@ def add_thread_item_service(
           )
 
   return collect_and_save_response()
+
+def add_block_to_notebook_service(
+  notebook_id: str,
+  block_id: str,
+  user_id: str,
+  client: MongoClient
+):
+  """
+  Adds or updates a block in a notebook by updating its layout.
+
+  Args:
+      notebook_id (str): The ID of the notebook.
+      block_id (str): The ID of the block.
+      layout_item (LayoutItem): The new layout values for the block.
+      user_id (str): The ID of the user making the request.
+      client (MongoClient): The MongoDB client instance.
+
+  Returns:
+      dict: The updated block information.
+  """
+  # Validate input
+  if not notebook_id or not block_id:
+      raise ValueError("Notebook ID and Block ID are required.")
+
+  layout_item = LayoutItem(
+    i='index1',
+    x=15,
+    y=25,
+    w=5,
+    h=4,
+    minW=2,
+    minH=2,
+    static=False,
+  )
+  # Call repository function to update block
+  success = update_block_repo(
+      block_id=block_id,
+      layout=layout_item.dict(by_alias=True),
+      client=client,
+  )
+
+  if not success:
+      raise RuntimeError(f"Failed to update block with ID {block_id}.")
+
+  return {"notebookId": notebook_id, "blockId": block_id, "layout": layout_item.model_dump(by_alias=True)}
+
+def get_blocks_for_notebook_service(
+  notebook_id: str, 
+  client: MongoClient
+):
+  response = get_blocks_repo(notebook_id, client)
+  return response

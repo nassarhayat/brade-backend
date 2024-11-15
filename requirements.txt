@@ -14,5 +14,5 @@ pymongo==4.9.2
 fastapi_clerk_auth==0.0.5
 clerk_backend_api==1.2.0
 openai-swarm==0.1.1
-PyJWT>=2.0.0python-dotenv
+PyJWT>=2.0.0
 python-dotenv==1.0.1

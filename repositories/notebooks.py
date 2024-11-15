@@ -8,41 +8,45 @@ def get_notebook_repo(notebook_id: str, client: MongoClient):
     notebooks_collection = client["brade_dev"]["notebooks"]
 
     pipeline = [
+        # Match the specific notebook
         {"$match": {"_id": ObjectId(notebook_id)}},
+
+        # Add the root-level id field
         {"$addFields": {"id": {"$toString": "$_id"}}},
+
+        # Ensure thread_items exists as an array
         {"$addFields": {"thread_items": {"$ifNull": ["$thread_items", []]}}},
-        # Extract blockIds from thread_items where blockId is not None
-        {"$addFields": {
-            "blockIds": {
-                "$filter": {
-                    "input": {
-                        "$map": {
-                            "input": "$thread_items",
-                            "as": "item",
-                            "in": {
-                                "$cond": [
-                                    {"$and": [
-                                        {"$ne": ["$$item.blockId", None]},
-                                        {"$ne": ["$$item.blockId", ""]}  # Also handle empty strings if necessary
-                                    ]},
-                                    {"$toObjectId": "$$item.blockId"},
-                                    None
-                                ]
+
+        # Extract and convert valid blockIds from thread_items
+        {
+            "$addFields": {
+                "blockIds": {
+                    "$map": {
+                        "input": {
+                            "$filter": {
+                                "input": "$thread_items",
+                                "as": "item",
+                                "cond": {"$and": [{"$ne": ["$$item.blockId", None]}, {"$ne": ["$$item.blockId", ""]}]}
                             }
-                        }
-                    },
-                    "as": "id",
-                    "cond": {"$ne": ["$$id", None]}
+                        },
+                        "as": "item",
+                        "in": {"$toObjectId": "$$item.blockId"}
+                    }
                 }
             }
-        }},
+        },
+
         # Perform a lookup to join blocks based on blockIds
-        {"$lookup": {
-            "from": "blocks",
-            "localField": "blockIds",
-            "foreignField": "_id",
-            "as": "blocks"
-        }},
+        {
+            "$lookup": {
+                "from": "blocks",
+                "localField": "blockIds",
+                "foreignField": "_id",
+                "as": "blocks"
+            }
+        },
+
+        # Project the final structure with transformed _id fields and embedded block details
         {
             "$project": {
                 "_id": 0,
@@ -53,38 +57,41 @@ def get_notebook_repo(notebook_id: str, client: MongoClient):
                         "input": "$thread_items",
                         "as": "item",
                         "in": {
-                            "$mergeObjects": [
-                                "$$item",
-                                {"id": {"$toString": "$$item._id"}},
-                                {
-                                    "block": {
-                                        "$cond": [
-                                            {"$and": [
-                                                {"$ne": ["$$item.blockId", None]},
-                                                {"$ne": ["$$item.blockId", ""]}
-                                            ]},
-                                            {
-                                                "$arrayElemAt": [
-                                                    {
-                                                        "$filter": {
-                                                            "input": "$blocks",
-                                                            "as": "block",
-                                                            "cond": {
-                                                                "$eq": [
-                                                                    "$$block._id",
-                                                                    {"$toObjectId": "$$item.blockId"}
-                                                                ]
-                                                            }
-                                                        }
-                                                    },
-                                                    0
+                            # Merge the thread_item fields, converting _id to id
+                            "id": {"$toString": "$$item._id"},
+                            "content": "$$item.content",
+                            "userType": "$$item.userType",
+                            "userId": "$$item.userId",
+                            "block": {
+                                "$let": {
+                                    "vars": {
+                                        "block": {
+                                            "$arrayElemAt": [
+                                                {
+                                                    "$filter": {
+                                                        "input": "$blocks",
+                                                        "as": "block",
+                                                        "cond": {"$eq": ["$$block._id", {"$toObjectId": "$$item.blockId"}]}
+                                                    }
+                                                },
+                                                0
+                                            ]
+                                        }
+                                    },
+                                    "in": {
+                                        "$cond": {
+                                            "if": {"$gt": ["$$block", None]},
+                                            "then": {
+                                                "$mergeObjects": [
+                                                    {"id": {"$toString": "$$block._id"}},  
+                                                    "$$block" 
                                                 ]
                                             },
-                                            None
-                                        ]
+                                            "else": None
+                                        }
                                     }
                                 }
-                            ]
+                            }
                         }
                     }
                 }
@@ -92,8 +99,9 @@ def get_notebook_repo(notebook_id: str, client: MongoClient):
         }
     ]
 
-    result = list(notebooks_collection.aggregate(pipeline))
 
+    result = list(notebooks_collection.aggregate(pipeline))
+    # print("RESULT_REPO", result)
     if result:
         return result[0]
     else:

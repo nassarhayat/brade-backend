@@ -19,17 +19,15 @@ class LayoutItem(BaseModel):
   isBounded: Optional[bool] = False
 
 class Block(BaseModel):
-  id: str = Field(alias="_id")
+  id: str = Field()
   blockType: str
   data: Any
   layout: Optional[LayoutItem] = None
-  
-  @validator("id", pre=True)
-  def convert_objectid_to_str(cls, value):
-    if isinstance(value, ObjectId):
-        return str(value)
-    return value
 
 class BlockCreateRequest(BaseModel):
-  blockType: str
-  data: Any
+  id: str
+  
+class BlockAddResponse(BaseModel):
+  notebookId: str
+  blockId: str
+  layout: LayoutItem

@@ -1,4 +1,5 @@
 import os
+import certifi
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from typing import Generator
@@ -9,7 +10,8 @@ load_dotenv()
 mongodb_pw = os.getenv("MONGODB_PW")
 uri = f"mongodb+srv://nassarhayat:{mongodb_pw}@cluster0.tshuf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-client = MongoClient(uri, server_api=ServerApi('1'))
+client = MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=certifi.where())
+
 database = client["brade_dev"]
 collection = database["notebooks"]
 
