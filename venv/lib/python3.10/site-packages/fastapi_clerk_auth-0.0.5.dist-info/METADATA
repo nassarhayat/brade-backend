@@ -1,0 +1,58 @@
+Metadata-Version: 2.1
+Name: fastapi_clerk_auth
+Version: 0.0.5
+Summary: FastAPI Auth Middleware for Clerk (https://clerk.com)
+Author-email: OSS Mafia <dev@oss-mafia.com>
+Project-URL: Homepage, https://github.com/OSSMafia/fastapi-clerk-middleware
+Project-URL: Source, https://github.com/OSSMafia/fastapi-clerk-middleware
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: fastapi >=0.95.0
+Requires-Dist: PyJWT >=2.0.0
+Requires-Dist: cryptography ==43.0.1
+
+# FastAPI Clerk Auth Middleware
+
+
+FastAPI Auth Middleware for [Clerk](https://clerk.com)
+
+Easily setup authentication on your API routes using your Clerk JWKS endpoint.
+
+## Install
+```bash
+pip install fastapi-clerk-auth
+```
+
+## Basic Usage
+```python
+from fastapi import FastAPI, Depends
+from fastapi_clerk_auth import ClerkConfig, ClerkHTTPBearer, HTTPAuthorizationCredentials
+from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
+
+app = FastAPI()
+
+clerk_config = ClerkConfig(jwks_url="https://example.com/.well-known/jwks.json") # Use your Clerk JWKS endpoint
+
+clerk_auth_guard = ClerkHTTPBearer(config=clerk_config)
+
+@app.get("/")
+async def read_root(credentials: HTTPAuthorizationCredentials | None = Depends(clerk_auth_guard)):
+    return JSONResponse(content=jsonable_encoder(credentials))
+```
+
+The returned `credentials` model will either be of type `None` or `HTTPAuthorizationCredentials`. If the model is populated it will have the following properties:
+- scheme
+    - Indicates the scheme of the Authorization header (Bearer) 
+- credentials
+    - Raw token received from the Authorization header
+- decoded
+    - The payload of the decoded token
+
+## Auto Errors
+By default the middleware automatically returns 403 errors if the token is missing or invalid. You can disable that behavior by setting the following:
+```python
+clerk_config = ClerkConfig(jwks_url="https://example.com/.well-known/jwks.json", auto_error=False)
+```
+This will allow requests to reach the endpoint for additional logic or error handling.

@@ -8,12 +8,12 @@ from services.notebooks import get_notebooks_service, create_notebook_service, \
   get_notebook_service, add_thread_item_service, add_block_to_notebook_service, \
   get_blocks_for_notebook_service
 from db import get_mongo_client
-# from auth import verify_token
+from auth import verify_token
 from schemas.notebook import Notebook, NotebooksResponse, NotebookCreateRequest, NotebookResponse
 from schemas.thread import ThreadItemCreateRequest
 from schemas.block import Block, BlockCreateRequest, BlockAddResponse
 
-router = APIRouter()
+router = APIRouter(dependencies=[Depends(verify_token)])
 
 @router.post("/notebooks", response_model=NotebookResponse)
 async def create_notebook(request: NotebookCreateRequest, client: MongoClient = Depends(get_mongo_client)):
@@ -25,7 +25,10 @@ async def create_notebook(request: NotebookCreateRequest, client: MongoClient = 
   return notebook
   
 @router.get("/notebooks", response_model=List[NotebooksResponse])
-async def get_notebooks(filter_by: Optional[str] = Query(None, title="Filter notebooks by type"), client: MongoClient = Depends(get_mongo_client)):
+async def get_notebooks(
+  filter_by: Optional[str] = Query(None, title="Filter notebooks by type"),
+  client: MongoClient = Depends(get_mongo_client),
+):
   notebooks = get_notebooks_service(filter_by, client)
   if not notebooks:
       raise HTTPException(status_code=500, detail="No notebooks found")
