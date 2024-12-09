@@ -1,4 +1,4 @@
-#!/Users/nassarhayat/apps/moon/brade-backend/venv/bin/python3.10
+#!/Users/nassarhayat/apps/moon/brade-backend/venv/bin/python3.13
 # -*- coding: utf-8 -*-
 import re
 import sys

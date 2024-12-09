@@ -1,0 +1,14 @@
+[
+    {
+        "conversation": [
+            {"role": "user", "content": "What is my risk from expected clients flows in the next week?"}
+        ],
+        "function": "get_client_trades"
+    },
+    {
+        "conversation": [
+            {"role": "user", "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"}
+        ],
+        "function": "get_predicted_flows"
+    }
+]

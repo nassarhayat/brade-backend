@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
-class User(BaseModel):
+class UserModel(BaseModel):
   name: str
   avatarUrl: str
