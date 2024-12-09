@@ -19,3 +19,4 @@ python-dotenv==1.0.1
 msgraph-core==1.1.7
 msal>=1.20.0
 python-dotenv>=0.19.0
+asyncpg==0.30.0
