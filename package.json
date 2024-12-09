@@ -5,6 +5,7 @@
   "description": "",
   "main": "repo.js",
   "scripts": {
+    "start": "node repo.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -1,12 +1,14 @@
 import aiohttp
 import json
+import os
 from typing import Dict, Any, Optional, List
 from aiohttp import WSMsgType
 
 # Global variables for connection state
 _session = None
 _ws = None
-REPO_URL = "ws://localhost:3030/api"
+REPO_URL = os.getenv("REPO_URL")
+
 
 async def connect():
     """Establish WebSocket connection to the Automerge repo server"""
