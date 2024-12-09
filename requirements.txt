@@ -16,3 +16,6 @@ clerk_backend_api==1.2.0
 openai-swarm==0.1.1
 PyJWT>=2.0.0
 python-dotenv==1.0.1
+msgraph-core>=2.0.0
+msal>=1.20.0
+python-dotenv>=0.19.0

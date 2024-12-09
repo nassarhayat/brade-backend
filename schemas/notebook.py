@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 from typing import Optional, List
-from .thread import ThreadItem
 from .block import Block
 
 class NotebooksResponse(BaseModel):
@@ -16,10 +15,9 @@ class NotebookUpdateRequest(BaseModel):
 class NotebookResponse(BaseModel):
     id: str
     title: str
-    thread_items: List[ThreadItem] = []
+    blocks: Optional[List[Block]] = None
 
 class Notebook(BaseModel):
     id: str
     title: str
-    thread_items: Optional[List[ThreadItem]] = None
     blocks: Optional[List[Block]] = None

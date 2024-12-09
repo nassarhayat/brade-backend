@@ -1,0 +1,977 @@
+[
+    {
+        "id": "1ded7cd9-771e-4b88-872e-5735fcf0a16b",
+        "timestamp": "2024-11-15T20:37:17.929305",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "None"
+                ],
+                "actual_message": [
+                    "Could you please clarify if you are looking to cancel your flight or if you want to change your flight details?"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "None"
+                ],
+                "actual_message": [
+                    "I'm here to assist with flight modifications. If you have any questions related to changing or canceling your flight, feel free to ask!"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "Let\u2019s drill down, which clients are likely to be trading t he bulk of 3m USDJPY swaps with me in the next week?"
+                    }
+                ],
+                "expected_function": "get_historical_basis",
+                "actual_function": [
+                    "None"
+                ],
+                "actual_message": [
+                    "It seems like your question is related to financial trading rather than a flight modification. Could you please clarify if you need assistance with a flight cancellation or change request so I can assist you appropriately?"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 0,
+        "total_evals": 3,
+        "overall_accuracy_percent": "0.00%"
+    },
+    {
+        "id": "085e56e7-82cd-47c5-94fa-c47e00ceaf4d",
+        "timestamp": "2024-11-15T22:26:26.924755",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_historical_basis"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "Let\u2019s drill down, which clients are likely to be trading t he bulk of 3m USDJPY swaps with me in the next week?"
+                    }
+                ],
+                "expected_function": "get_historical_basis",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 0,
+        "total_evals": 3,
+        "overall_accuracy_percent": "0.00%"
+    },
+    {
+        "id": "d7eeeb76-6e24-4c53-835d-ae44656d6d5f",
+        "timestamp": "2024-11-19T15:57:40.698900",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_historical_basis"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "Let\u2019s drill down, which clients are likely to be trading t he bulk of 3m USDJPY swaps with me in the next week?"
+                    }
+                ],
+                "expected_function": "get_historical_basis",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 0,
+        "total_evals": 3,
+        "overall_accuracy_percent": "0.00%"
+    },
+    {
+        "id": "568e4d35-256b-4cfa-bd6a-1f4a6c7d5783",
+        "timestamp": "2024-11-19T16:03:47.896656",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 0,
+        "total_evals": 1,
+        "overall_accuracy_percent": "0.00%"
+    },
+    {
+        "id": "853d2a80-7a1e-4323-944d-04e95b0045b7",
+        "timestamp": "2024-11-19T16:05:07.628577",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 0,
+        "total_evals": 1,
+        "overall_accuracy_percent": "0.00%"
+    },
+    {
+        "id": "37449f59-fffe-47eb-9f17-b923a0a4d776",
+        "timestamp": "2024-11-19T16:05:42.068505",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 0,
+        "total_evals": 1,
+        "overall_accuracy_percent": "0.00%"
+    },
+    {
+        "id": "108f5322-ad8a-4bdd-9649-78ee6b62019c",
+        "timestamp": "2024-11-19T16:06:00.436733",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 0,
+        "total_evals": 1,
+        "overall_accuracy_percent": "0.00%"
+    },
+    {
+        "id": "c8e494e6-7fc6-4d59-8305-8e0baaf2e891",
+        "timestamp": "2024-11-19T16:06:16.852690",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "100.00%"
+            }
+        ],
+        "correct_evals": 1,
+        "total_evals": 1,
+        "overall_accuracy_percent": "100.00%"
+    },
+    {
+        "id": "50cc97a6-841a-4f5d-9545-0c7bf659e51a",
+        "timestamp": "2024-11-19T16:09:23.362575",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 0,
+        "total_evals": 1,
+        "overall_accuracy_percent": "0.00%"
+    },
+    {
+        "id": "cafa83bd-0408-4515-8e17-580f66c77b65",
+        "timestamp": "2024-11-19T16:10:15.060118",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "100.00%"
+            }
+        ],
+        "correct_evals": 1,
+        "total_evals": 1,
+        "overall_accuracy_percent": "100.00%"
+    },
+    {
+        "id": "4ecfaa7c-fad0-40a8-a401-5a5b675e8e75",
+        "timestamp": "2024-11-19T16:11:15.876067",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "100.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_historical_basis"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "Let\u2019s drill down, which clients are likely to be trading t he bulk of 3m USDJPY swaps with me in the next week?"
+                    }
+                ],
+                "expected_function": "get_historical_basis",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 1,
+        "total_evals": 3,
+        "overall_accuracy_percent": "33.33%"
+    },
+    {
+        "id": "56e3b361-a915-4a52-88aa-49b7c94ceb77",
+        "timestamp": "2024-11-19T16:12:48.047956",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "100.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_historical_basis"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "Let\u2019s drill down, which clients are likely to be trading t he bulk of 3m USDJPY swaps with me in the next week?"
+                    }
+                ],
+                "expected_function": "get_historical_basis",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 1,
+        "total_evals": 3,
+        "overall_accuracy_percent": "33.33%"
+    },
+    {
+        "id": "760e5399-a178-4c54-b0c2-82256bf69133",
+        "timestamp": "2024-11-19T16:16:41.047045",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "100.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_historical_basis"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "Let\u2019s drill down, which clients are likely to be trading t he bulk of 3m USDJPY swaps with me in the next week?"
+                    }
+                ],
+                "expected_function": "get_historical_basis",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 1,
+        "total_evals": 3,
+        "overall_accuracy_percent": "33.33%"
+    },
+    {
+        "id": "6e9c2048-30d5-405c-899e-88cebcd8a066",
+        "timestamp": "2024-11-19T17:56:49.808579",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_historical_basis"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "Let\u2019s drill down, which clients are likely to be trading t he bulk of 3m USDJPY swaps with me in the next week?"
+                    }
+                ],
+                "expected_function": "get_historical_basis",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 0,
+        "total_evals": 3,
+        "overall_accuracy_percent": "0.00%"
+    },
+    {
+        "id": "4bc0753a-a9cc-4814-86ac-0dd3149ce49e",
+        "timestamp": "2024-11-19T17:59:16.660768",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "100.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_historical_basis"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "Let\u2019s drill down, which clients are likely to be trading t he bulk of 3m USDJPY swaps with me in the next week?"
+                    }
+                ],
+                "expected_function": "get_historical_basis",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 1,
+        "total_evals": 3,
+        "overall_accuracy_percent": "33.33%"
+    },
+    {
+        "id": "231f84b6-9d1a-4430-abc6-38452ccbb1f6",
+        "timestamp": "2024-11-19T18:35:41.888723",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "100.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "Let\u2019s drill down, which clients are likely to be trading t he bulk of 3m USDJPY swaps with me in the next week?"
+                    }
+                ],
+                "expected_function": "get_historical_basis",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 1,
+        "total_evals": 3,
+        "overall_accuracy_percent": "33.33%"
+    },
+    {
+        "id": "1b754ca9-c1da-44b2-bd90-1286477d9c5c",
+        "timestamp": "2024-11-19T18:37:29.694623",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "100.00%"
+            }
+        ],
+        "correct_evals": 1,
+        "total_evals": 2,
+        "overall_accuracy_percent": "50.00%"
+    },
+    {
+        "id": "94791f59-75bb-4d51-826f-2ad5f7b0bb62",
+        "timestamp": "2024-11-19T18:39:22.940293",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "100.00%"
+            }
+        ],
+        "correct_evals": 1,
+        "total_evals": 2,
+        "overall_accuracy_percent": "50.00%"
+    },
+    {
+        "id": "5091ebb7-e79b-46cc-a66c-9d8416cb1b1e",
+        "timestamp": "2024-11-19T18:39:59.132200",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_historical_basis"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 0,
+        "total_evals": 2,
+        "overall_accuracy_percent": "0.00%"
+    },
+    {
+        "id": "318a9200-49ea-4c5d-8c42-83e51ddb6774",
+        "timestamp": "2024-11-19T18:40:19.173589",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_historical_basis"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 0,
+        "total_evals": 2,
+        "overall_accuracy_percent": "0.00%"
+    },
+    {
+        "id": "57020f82-b1f2-42da-adda-642bebf94274",
+        "timestamp": "2024-11-19T18:42:09.921407",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "100.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_historical_basis"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "0.00%"
+            }
+        ],
+        "correct_evals": 1,
+        "total_evals": 2,
+        "overall_accuracy_percent": "50.00%"
+    },
+    {
+        "id": "0fcfa14c-c1e4-4fcd-9ccf-7ed72ded1d9f",
+        "timestamp": "2024-11-19T18:42:27.239380",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "100.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "100.00%"
+            }
+        ],
+        "correct_evals": 2,
+        "total_evals": 2,
+        "overall_accuracy_percent": "100.00%"
+    },
+    {
+        "id": "45214692-fcf8-4f20-9cba-509cd8a05570",
+        "timestamp": "2024-11-19T18:42:38.621104",
+        "results": [
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What is my risk from expected clients flows in the next week?"
+                    }
+                ],
+                "expected_function": "get_client_trades",
+                "actual_function": [
+                    "get_client_trades"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "100.00%"
+            },
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "What has 3m USDJPY basis done in the last 3 months and last year? Any expectations on how it might move in the coming week?"
+                    }
+                ],
+                "expected_function": "get_predicted_flows",
+                "actual_function": [
+                    "get_predicted_flows"
+                ],
+                "actual_message": [
+                    "None"
+                ],
+                "case_accuracy": "100.00%"
+            }
+        ],
+        "correct_evals": 2,
+        "total_evals": 2,
+        "overall_accuracy_percent": "100.00%"
+    }
+]
