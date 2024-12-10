@@ -16,12 +16,36 @@ def create_thread_repo(thread: ThreadModel, client: MongoClient = None) -> Dict:
     result = client.brade_dev.threads.insert_one(thread_dict)
     created_thread = client.brade_dev.threads.find_one({"_id": result.inserted_id})
     
+    # Get initial items (empty for new thread) with pagination
+    items_cursor = client.brade_dev.thread_items.find(
+        {"thread_id": result.inserted_id}
+    ).sort("created", -1).limit(20)  # Default page size of 20
+    
+    items = [{
+        "id": str(item["_id"]),
+        "thread_id": str(item["thread_id"]),
+        "content": item.get("content", ""),
+        "user_id": item.get("user_id", ""),
+        "userType": item.get("userType", "user"),
+        "block_document_id": item.get("block_document_id"),
+        "context_document_ids": item.get("context_document_ids", []),
+        "steps": item.get("steps", []),
+        "created": item.get("created", datetime.utcnow())
+    } for item in items_cursor]
+    
     return {
         "id": str(created_thread["_id"]),
         "name": created_thread["name"],
         "created": created_thread["created"],
         "updated": created_thread["updated"],
-        "status": created_thread["status"]
+        "status": created_thread["status"],
+        "items": items,
+        "pagination": {
+            "total": 0,  # New thread starts with 0 items
+            "page": 1,   # First page
+            "page_size": 20,  # Default page size
+            "total_pages": 1  # Start with 1 page
+        }
     }
 
 def get_thread_with_items_repo(thread_id: str, page: int, page_size: int, client: MongoClient = None) -> Optional[Dict]:
