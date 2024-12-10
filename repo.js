@@ -87,7 +87,7 @@ export class Server {
       storage: new NodeFSStorageAdapter(dir),
       /** @ts-ignore @type {(import("@automerge/automerge-repo").PeerId)}  */
       peerId: `storage-server-${hostname}`,
-      sharePolicy: async () => false,
+      sharePolicy: async () => true,
     }
     this.#repo = new Repo(config)
 
