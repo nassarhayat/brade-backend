@@ -78,8 +78,7 @@ export class Server {
     this.#socket = new WebSocketServer({ noServer: true })
     this.#apiSocket = new WebSocketServer({ noServer: true })
 
-    const PORT =
-      process.env.PORT !== undefined ? parseInt(process.env.PORT) : 3030
+    const PORT = process.env.PORT || 3030
     const app = express()
     app.use(express.static("public"))
 
